@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/vite-env.d.ts","./src/lib/supabase.ts","./src/app.vue","./src/components/helloworld.vue","./src/components/searchbar.vue","./src/components/sessionmodal.vue","./src/components/sessionstable.vue","./src/components/statisticscard.vue"],"version":"5.9.3"}
