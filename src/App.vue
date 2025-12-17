@@ -11,6 +11,8 @@ const tableRef = ref<InstanceType<typeof SessionsTable>>()
 const selectedSession = ref<ParkingSession | null>(null)
 const isModalOpen = ref(false)
 
+
+
 const handleSearch = (query: string) => {
   tableRef.value?.handleSearch(query)
 }
@@ -28,8 +30,10 @@ const handleModalClose = () => {
 
 <template>
   <div class="app-container">
-    <header class="app-header">
-      <h1>��️ Avtoturargoh boshqaruvi</h1>
+    <header class="app-header container justify-center d-flex gap-3">
+     <button type="button" class="btn btn-secondary">Parking-system</button>
+     <button type="button" class="btn btn-secondary">Operator qo'shish</button>
+     <button type="button" class="btn btn-secondary">Konfiguratsiya</button>
     </header>
 
     <main class="app-main">
@@ -37,18 +41,17 @@ const handleModalClose = () => {
 
       <div class="content-section">
         <SearchBar @search="handleSearch" />
-        <SessionsTable
-          ref="tableRef"
-          @session-click="handleSessionClick"
-        />
+        <SessionsTable ref="tableRef" @session-click="handleSessionClick" />
       </div>
     </main>
 
-    <SessionModal
-      :session="selectedSession"
-      :is-open="isModalOpen"
-      @close="handleModalClose"
-    />
+<!-- 
+ <InputDrawer v-model="isOpenInput" v-model:newCar="inputCar" />
+    <OutputDrawer v-model="isOpenOutput" v-model:newCar="outputCar" /> -->
+
+
+
+    <SessionModal :session="selectedSession" :is-open="isModalOpen" @close="handleModalClose" />
   </div>
 </template>
 
@@ -69,13 +72,15 @@ body {
 .app-container {
   min-height: 100vh;
   padding-bottom: 40px;
+  background-color: #1a1a1a; 
 }
 
 .app-header {
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 24px 32px;
+  padding: 6px;
   margin-bottom: 32px;
+  color: #fff;
 
   h1 {
     font-size: 28px;

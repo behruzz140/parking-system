@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { supabase } from '../lib/supabase'
+import Drawer from 'primevue/drawer'
 
 const stats = ref({
   totalSessions: 0,
@@ -8,6 +9,8 @@ const stats = ref({
   totalExits: 0,
   carsInside: 0
 })
+
+const drawerVisible = ref(false)
 
 const loadStats = async () => {
   const today = new Date()
@@ -34,45 +37,58 @@ defineExpose({ loadStats })
 </script>
 
 <template>
-  <div class="statistics">
-    <h2>Bugungi statistika</h2>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">📊</div>
-        <div class="stat-info">
-          <div class="stat-label">Sessiyalar soni</div>
-          <div class="stat-value">{{ stats.totalSessions }}</div>
-        </div>
-      </div>
+  <div>
+    <h2 class="operator-h2">Operator</h2>
 
-      <div class="stat-card">
-        <div class="stat-icon">💰</div>
-        <div class="stat-info">
-          <div class="stat-label">Umumiy to'lov</div>
-          <div class="stat-value">{{ stats.totalPayment.toLocaleString() }} so'm</div>
-        </div>
-      </div>
 
-      <div class="stat-card">
-        <div class="stat-icon">🚗</div>
-        <div class="stat-info">
-          <div class="stat-label">Chiqishlar soni</div>
-          <div class="stat-value">{{ stats.totalExits }}</div>
-        </div>
-      </div>
 
-      <div class="stat-card">
-        <div class="stat-icon">🅿️</div>
-        <div class="stat-info">
-          <div class="stat-label">Ichkaridagilar</div>
-          <div class="stat-value">{{ stats.carsInside }}</div>
+
+    <div class="statistics">
+      <h2>Bugungi statistika</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-info">
+            <div class="stat-label">Sessiyalar soni</div>
+            <div class="stat-value">{{ stats.totalSessions }}</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div class="stat-info">
+            <div class="stat-label">Umumiy to'lov</div>
+            <div class="stat-value">{{ stats.totalPayment.toLocaleString() }} so'm</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🚗</div>
+          <div class="stat-info">
+            <div class="stat-label">Chiqishlar soni</div>
+            <div class="stat-value">{{ stats.totalExits }}</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🅿️</div>
+          <div class="stat-info">
+            <div class="stat-label">Ichkaridagilar</div>
+            <div class="stat-value">{{ stats.carsInside }}</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
+
 <style scoped lang="scss">
+.operator-h2 {
+  color: #fff;
+}
+
 .statistics {
   margin-bottom: 32px;
 

@@ -125,16 +125,16 @@ const handleClose = () => {
   }
 
   .close-btn {
-    width: 32px;
-    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // width: 32px;
+    // height: 32px;
     border: none;
     background: #f5f5f5;
     border-radius: 8px;
     font-size: 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: background-color 0.2s;
 
     &:hover {

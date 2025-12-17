@@ -1,32 +1,14 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
+import { createApp } from "vue";
+import App from "./App.vue";
+import "./style.css";
 
-function createWindow() {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
-      contextIsolation: false
-    }
-  });
+import PrimeVue from "primevue/config";
+import Drawer from "primevue/drawer";
 
-  if (app.isPackaged) {
-    win.loadFile(path.join(__dirname, 'dist/index.html'));
-  } else {
-    win.loadURL('http://localhost:5173');
-  }
-}
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
-app.whenReady().then(() => {
-  createWindow();
-
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
-});
+const app = createApp(App);
+app.use(PrimeVue);
+app.component("Drawer", Drawer);
+app.mount("#app");

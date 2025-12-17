@@ -12,7 +12,13 @@
     "build:win": "npm run build && electron-builder --win"
   },
   "dependencies": {
+    "@primeuix/themes": "^2.0.2",
     "@supabase/supabase-js": "^2.87.3",
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.5.3",
     "sass": "^1.97.0",
     "vue": "^3.4.38"
   },
